@@ -17,6 +17,7 @@ mongoose.Promise = global.Promise;
 
 // Express only serves static assets in production
 if (process.env.NODE_ENV === 'production') {
+    console.log('Serving app static');
     app.use(express.static('react-app/build'));
 }
 
@@ -29,7 +30,6 @@ const PlanningController = Controller.bind(Planning.Model);
 const planningService = require('./api/service/planning');
 
 io.on('connection', (socket) => {
-    console.log('a user connected');
     socket.on('create_planning', () => {
             planningService.create("Toto", socket, (resource) => {
                 socket.emit('planning_created', resource);
