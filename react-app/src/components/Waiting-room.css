@@ -1,0 +1,8 @@
+.participantsContainer {
+    display: flex;
+    flex-flow: row;
+}
+
+.participantsContainer .ui.participant {
+    margin: 5px;
+}

@@ -1,0 +1,4 @@
+.choiceComponent {
+    display: flex;
+    flex-direction: column;
+}

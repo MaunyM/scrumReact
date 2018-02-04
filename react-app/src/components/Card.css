@@ -1,0 +1,20 @@
+.ui.card.poker {
+    height: 17vw;
+    width: 12vw;
+}
+
+.ui.card.poker .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+
+.ui.card.poker .content.back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: #967d4e;
+    background-color: #222222;
+}

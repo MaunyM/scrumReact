@@ -1,0 +1,4 @@
+.joinComponent {
+    display: flex;
+    flex-direction: column;
+}
