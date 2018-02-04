@@ -91,7 +91,7 @@ const adddRoute = (app, controller) => {
 
 adddRoute(app, PlanningController);
 
-app.set(app.get('port'), (process.env.PORT || 3001));
-http.listen(4000, function () {
-    console.log('listening on *:4000');
+app.set('port', (process.env.PORT || 3001));
+http.listen(app.get('port'), function () {
+    console.log(`listening on *:${app.get('port')}`);
 });
