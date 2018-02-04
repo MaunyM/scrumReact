@@ -16,9 +16,9 @@ mongoose.connect(mongooseUri);
 mongoose.Promise = global.Promise;
 
 // Express only serves static assets in production
-//if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
     app.use(express.static('react-app/build'));
-//}
+}
 
 const Controller = require('./api/controller');
 
@@ -91,6 +91,7 @@ const adddRoute = (app, controller) => {
 
 adddRoute(app, PlanningController);
 
+app.set(app.get('port'), (process.env.PORT || 3001));
 http.listen(4000, function () {
     console.log('listening on *:4000');
 });
