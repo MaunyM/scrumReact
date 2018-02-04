@@ -16,8 +16,11 @@ const createPlanning = (action$: ActionsObservable<Action>) =>
     action$.ofType('CREATE_PLANNING')
         .mergeMap((action: Action) =>
             new Observable((observer: Subscriber<ScrumAction>) => {
-                socket = io('http://localhost:4000');
-
+                if (process.env.NODE_ENV === 'production') {
+                    socket = io();
+                } else {
+                    socket = io('http://localhost:3001');
+                }
                 socket.on('planning_created', (data: Planning) => {
                     observer.next({type: 'PLANNING_CREATED', data});
                     observer.next(push('/waitingRoom'));
@@ -37,8 +40,11 @@ const joinPlanning = (action$: ActionsObservable<Action>) =>
     action$.ofType('JOIN_PLANNING')
         .mergeMap((action: JoinPlanningAction) =>
             new Observable((observer: Subscriber<ScrumAction>) => {
-                socket = io('http://localhost:4000');
-
+                if (process.env.NODE_ENV === 'production') {
+                    socket = io();
+                } else {
+                    socket = io('http://localhost:3001');
+                }
                 socket.on('planning_joined', (data: Planning) => {
                     observer.next({type: 'PLANNING_JOINED', data});
                     observer.next(push('/presentationRoom'));
